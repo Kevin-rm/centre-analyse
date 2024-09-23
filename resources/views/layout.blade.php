@@ -4,14 +4,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <title></title>
-    <link
-        rel="icon"
-        href="assets/img/kaiadmin/favicon.ico"
-        type="image/x-icon"
-    />
+    
 
     <!-- Fonts and icons -->
-    <script src="assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="{{asset("assets/js/plugin/webfont/webfont.min.js")}}"></script>
     <script>
         WebFont.load({
             google: {families: ["Public Sans:300,400,500,600,700"]},
@@ -22,7 +18,7 @@
                     "Font Awesome 5 Brands",
                     "simple-line-icons",
                 ],
-                urls: ["assets/css/fonts.min.css"],
+                urls: ["{{asset("assets/css/fonts.min.css")}}"],
             },
             active: function () {
                 sessionStorage.fonts = true;
@@ -31,9 +27,9 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="assets/css/plugins.min.css"/>
-    <link rel="stylesheet" href="assets/css/kaiadmin.min.css"/>
+    <link rel="stylesheet" href="{{asset("assets/css/bootstrap.min.css")}}"/>
+    <link rel="stylesheet" href="{{asset("assets/css/plugins.min.css")}}"/>
+    <link rel="stylesheet" href="{{asset("assets/css/kaiadmin.min.css")}}"/>
 </head>
 <body>
 <div class="wrapper">
@@ -44,7 +40,7 @@
             <div class="logo-header" data-background-color="dark">
                 <a href="" class="logo">
                     <img
-                        src="assets/img/kaiadmin/logo_light.svg"
+                        src="{{asset("assets/img/kaiadmin/logo_light.svg")}}"
                         alt="navbar brand"
                         class="navbar-brand"
                         height="20"
@@ -328,7 +324,7 @@
                 <div class="logo-header" data-background-color="dark">
                     <a href="index.html" class="logo">
                         <img
-                            src="assets/img/kaiadmin/logo_light.svg"
+                            src="{{asset("assets/img/kaiadmin/logo_light.svg")}}"
                             alt="navbar brand"
                             class="navbar-brand"
                             height="20"
@@ -426,7 +422,7 @@
                                             <a href="#">
                                                 <div class="notif-img">
                                                     <img
-                                                        src="assets/img/jm_denis.jpg"
+                                                        src="{{asset("assets/img/jm_denis.jpg")}}"
                                                         alt="Img Profile"
                                                     />
                                                 </div>
@@ -439,7 +435,7 @@
                                             <a href="#">
                                                 <div class="notif-img">
                                                     <img
-                                                        src="assets/img/chadengle.jpg"
+                                                        src="{{asset("assets/img/chadengle.jpg")}}"
                                                         alt="Img Profile"
                                                     />
                                                 </div>
@@ -452,7 +448,7 @@
                                             <a href="#">
                                                 <div class="notif-img">
                                                     <img
-                                                        src="assets/img/mlane.jpg"
+                                                        src="{{asset("assets/img/mlane.jpg")}}"
                                                         alt="Img Profile"
                                                     />
                                                 </div>
@@ -467,7 +463,7 @@
                                             <a href="#">
                                                 <div class="notif-img">
                                                     <img
-                                                        src="assets/img/talha.jpg"
+                                                        src="{{asset("assets/img/talha.jpg")}}"
                                                         alt="Img Profile"
                                                     />
                                                 </div>
@@ -535,7 +531,7 @@
                                             <a href="#">
                                                 <div class="notif-img">
                                                     <img
-                                                        src="assets/img/profile2.jpg"
+                                                        src="{{asset("assets/img/profile2.jpg")}}"
                                                         alt="Img Profile"
                                                     />
                                                 </div>
@@ -652,11 +648,7 @@
                                 aria-expanded="false"
                             >
                                 <div class="avatar-sm">
-                                    <img
-                                        src="assets/img/profile.jpg"
-                                        alt="..."
-                                        class="avatar-img rounded-circle"
-                                    />
+                                    
                                 </div>
                                 <span class="profile-username">
                       <span class="op-7">Hi,</span>
@@ -668,11 +660,7 @@
                                     <li>
                                         <div class="user-box">
                                             <div class="avatar-lg">
-                                                <img
-                                                    src="assets/img/profile.jpg"
-                                                    alt="image profile"
-                                                    class="avatar-img rounded"
-                                                />
+                                    
                                             </div>
                                             <div class="u-text">
                                                 <h4>Hizrian</h4>
@@ -928,7 +916,7 @@
                                                     <td>
                                                         <div class="flag">
                                                             <img
-                                                                src="assets/img/flags/id.png"
+                                                                src="{{asset("assets/img/flags/id.png")}}"
                                                                 alt="indonesia"
                                                             />
                                                         </div>
@@ -941,7 +929,7 @@
                                                     <td>
                                                         <div class="flag">
                                                             <img
-                                                                src="assets/img/flags/us.png"
+                                                                src="{{asset("assets/img/flags/us.png")}}"
                                                                 alt="united states"
                                                             />
                                                         </div>
@@ -954,7 +942,7 @@
                                                     <td>
                                                         <div class="flag">
                                                             <img
-                                                                src="assets/img/flags/au.png"
+                                                                src="{{asset("assets/img/flags/au.png")}}"
                                                                 alt="australia"
                                                             />
                                                         </div>
@@ -966,10 +954,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="flag">
-                                                            <img
-                                                                src="assets/img/flags/ru.png"
-                                                                alt="russia"
-                                                            />
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>Russia</td>
@@ -979,10 +964,7 @@
                                                 <tr>
                                                     <td>
                                                         <div class="flag">
-                                                            <img
-                                                                src="assets/img/flags/cn.png"
-                                                                alt="china"
-                                                            />
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>China</td>
@@ -991,12 +973,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div class="flag">
-                                                            <img
-                                                                src="assets/img/flags/br.png"
-                                                                alt="brazil"
-                                                            />
-                                                        </div>
+                                                        
                                                     </td>
                                                     <td>Brasil</td>
                                                     <td class="text-end">640</td>
@@ -1054,11 +1031,7 @@
                                 <div class="card-list py-4">
                                     <div class="item-list">
                                         <div class="avatar">
-                                            <img
-                                                src="assets/img/jm_denis.jpg"
-                                                alt="..."
-                                                class="avatar-img rounded-circle"
-                                            />
+                                            
                                         </div>
                                         <div class="info-user ms-3">
                                             <div class="username">Jimmy Denis</div>
@@ -1091,11 +1064,7 @@
                                     </div>
                                     <div class="item-list">
                                         <div class="avatar">
-                                            <img
-                                                src="assets/img/talha.jpg"
-                                                alt="..."
-                                                class="avatar-img rounded-circle"
-                                            />
+                                            
                                         </div>
                                         <div class="info-user ms-3">
                                             <div class="username">Talha</div>
@@ -1110,11 +1079,7 @@
                                     </div>
                                     <div class="item-list">
                                         <div class="avatar">
-                                            <img
-                                                src="assets/img/chadengle.jpg"
-                                                alt="..."
-                                                class="avatar-img rounded-circle"
-                                            />
+                                            
                                         </div>
                                         <div class="info-user ms-3">
                                             <div class="username">Chad</div>
@@ -1355,7 +1320,7 @@
         </footer>
     </div>
 
-    <!-- Custom template | don't include it in your project! -->
+    <!-- Custom template | don"t include it in your project! -->
     <div class="custom-template">
         <div class="title">Settings</div>
         <div class="custom-content">
@@ -1551,12 +1516,12 @@
     <!-- End Custom template -->
 </div>
 <!--   Core JS Files   -->
-<script src="assets/js/core/jquery-3.7.1.min.js"></script>
-<script src="assets/js/core/popper.min.js"></script>
-<script src="assets/js/core/bootstrap.min.js"></script>
+<script src="{{asset("assets/js/core/jquery-3.7.1.min.js")}}"></script>
+<script src="{{asset("assets/js/core/popper.min.js")}}"></script>
+<script src="{{asset("assets/js/core/bootstrap.min.js")}}"></script>
 
 <!-- jQuery Scrollbar -->
-<script src="assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="{{asset("assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js")}}"></script>
 
 <!-- Chart JS -->
 <script src="assets/js/plugin/chart.js/chart.min.js"></script>
@@ -1573,9 +1538,6 @@
 <!-- Bootstrap Notify -->
 <script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
-<!-- jQuery Vector Maps -->
-<script src="assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
-<script src="assets/js/plugin/jsvectormap/world.js"></script>
 
 <!-- Sweet Alert -->
 <script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
@@ -1583,7 +1545,7 @@
 <!-- Kaiadmin JS -->
 <script src="assets/js/kaiadmin.min.js"></script>
 
-<!-- Kaiadmin DEMO methods, don't include it in your project! -->
+<!-- Kaiadmin DEMO methods, don"t include it in your project! -->
 <script src="assets/js/setting-demo.js"></script>
 <script src="assets/js/demo.js"></script>
 <script>
@@ -1643,7 +1605,7 @@
                     "Font Awesome 5 Brands",
                     "simple-line-icons",
                 ],
-                urls: ["assets/css/fonts.min.css"],
+                urls: ["{{asset("assets/css/fonts.min.css")}}"],
             },
             active: function () {
                 sessionStorage.fonts = true;
@@ -1652,12 +1614,10 @@
     </script>
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="assets/css/plugins.min.css"/>
-    <link rel="stylesheet" href="assets/css/kaiadmin.min.css"/>
+    <link rel="stylesheet" href="{{asset("assets/css/bootstrap.min.css")}}"/>
+    <link rel="stylesheet" href="{{asset("assets/css/plugins.min.css")}}"/>
+    <link rel="stylesheet" href="{{asset("assets/css/kaiadmin.min.css")}}"/>
 
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="assets/css/demo.css"/>
 </head>
 <body>
 <div class="wrapper">
@@ -2979,7 +2939,7 @@
         </footer>
     </div>
 
-    <!-- Custom template | don't include it in your project! -->
+    <!-- Custom template | don"t include it in your project! -->
     <div class="custom-template">
         <div class="title">Settings</div>
         <div class="custom-content">
