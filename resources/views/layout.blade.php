@@ -2,11 +2,8 @@
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <title></title>
-    <meta
-        content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-        name="viewport"
-    />
     <link
         rel="icon"
         href="assets/img/kaiadmin/favicon.ico"
@@ -3200,19 +3197,11 @@
 <!-- Bootstrap Notify -->
 <script src="assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
-<!-- jQuery Vector Maps -->
-<script src="assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
-<script src="assets/js/plugin/jsvectormap/world.js"></script>
-
 <!-- Sweet Alert -->
 <script src="assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
 <!-- Kaiadmin JS -->
 <script src="assets/js/kaiadmin.min.js"></script>
-
-<!-- Kaiadmin DEMO methods, don't include it in your project! -->
-<script src="assets/js/setting-demo.js"></script>
-<script src="assets/js/demo.js"></script>
 <script>
     $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
         type: "line",
