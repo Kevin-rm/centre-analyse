@@ -7,11 +7,7 @@
         content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
         name="viewport"
     />
-    <link
-        rel="icon"
-        href="assets/img/kaiadmin/favicon.ico"
-        type="image/x-icon"
-    />
+    
 
     <!-- Fonts and icons -->
     <script src="assets/js/plugin/webfont/webfont.min.js"></script>
@@ -46,14 +42,7 @@
         <div class="sidebar-logo">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
-                <a href="index.html" class="logo">
-                    <img
-                        src="assets/img/kaiadmin/logo_light.svg"
-                        alt="navbar brand"
-                        class="navbar-brand"
-                        height="20"
-                    />
-                </a>
+                
                 <div class="nav-toggle">
                     <button class="btn btn-toggle toggle-sidebar">
                         <i class="gg-menu-right"></i>
@@ -331,12 +320,7 @@
                 <!-- Logo Header -->
                 <div class="logo-header" data-background-color="dark">
                     <a href="index.html" class="logo">
-                        <img
-                            src="assets/img/kaiadmin/logo_light.svg"
-                            alt="navbar brand"
-                            class="navbar-brand"
-                            height="20"
-                        />
+                        
                     </a>
                     <div class="nav-toggle">
                         <button class="btn btn-toggle toggle-sidebar">
@@ -429,10 +413,7 @@
                                         <div class="notif-center">
                                             <a href="#">
                                                 <div class="notif-img">
-                                                    <img
-                                                        src="assets/img/jm_denis.jpg"
-                                                        alt="Img Profile"
-                                                    />
+                                                    
                                                 </div>
                                                 <div class="notif-content">
                                                     <span class="subject">Jimmy Denis</span>
@@ -441,12 +422,7 @@
                                                 </div>
                                             </a>
                                             <a href="#">
-                                                <div class="notif-img">
-                                                    <img
-                                                        src="assets/img/chadengle.jpg"
-                                                        alt="Img Profile"
-                                                    />
-                                                </div>
+                                                
                                                 <div class="notif-content">
                                                     <span class="subject">Chad</span>
                                                     <span class="block"> Ok, Thanks ! </span>
@@ -454,12 +430,7 @@
                                                 </div>
                                             </a>
                                             <a href="#">
-                                                <div class="notif-img">
-                                                    <img
-                                                        src="assets/img/mlane.jpg"
-                                                        alt="Img Profile"
-                                                    />
-                                                </div>
+                                                
                                                 <div class="notif-content">
                                                     <span class="subject">Jhon Doe</span>
                                                     <span class="block">
@@ -469,12 +440,7 @@
                                                 </div>
                                             </a>
                                             <a href="#">
-                                                <div class="notif-img">
-                                                    <img
-                                                        src="assets/img/talha.jpg"
-                                                        alt="Img Profile"
-                                                    />
-                                                </div>
+                                                
                                                 <div class="notif-content">
                                                     <span class="subject">Talha</span>
                                                     <span class="block"> Hi, Apa Kabar ? </span>
@@ -537,12 +503,7 @@
                                                 </div>
                                             </a>
                                             <a href="#">
-                                                <div class="notif-img">
-                                                    <img
-                                                        src="assets/img/profile2.jpg"
-                                                        alt="Img Profile"
-                                                    />
-                                                </div>
+                                                
                                                 <div class="notif-content">
                               <span class="block">
                                 Reza send messages to you
@@ -655,13 +616,6 @@
                                 href="#"
                                 aria-expanded="false"
                             >
-                                <div class="avatar-sm">
-                                    <img
-                                        src="assets/img/profile.jpg"
-                                        alt="..."
-                                        class="avatar-img rounded-circle"
-                                    />
-                                </div>
                                 <span class="profile-username">
                       <span class="op-7">Hi,</span>
                       <span class="fw-bold">Hizrian</span>
@@ -671,13 +625,7 @@
                                 <div class="dropdown-user-scroll scrollbar-outer">
                                     <li>
                                         <div class="user-box">
-                                            <div class="avatar-lg">
-                                                <img
-                                                    src="assets/img/profile.jpg"
-                                                    alt="image profile"
-                                                    class="avatar-img rounded"
-                                                />
-                                            </div>
+                                            
                                             <div class="u-text">
                                                 <h4>Hizrian</h4>
                                                 <p class="text-muted">hello@example.com</p>
@@ -930,12 +878,7 @@
                                                 <tbody>
                                                 <tr>
                                                     <td>
-                                                        <div class="flag">
-                                                            <img
-                                                                src="assets/img/flags/id.png"
-                                                                alt="indonesia"
-                                                            />
-                                                        </div>
+                                                        
                                                     </td>
                                                     <td>Indonesia</td>
                                                     <td class="text-end">2.320</td>
@@ -943,38 +886,21 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div class="flag">
-                                                            <img
-                                                                src="assets/img/flags/us.png"
-                                                                alt="united states"
-                                                            />
-                                                        </div>
+                                                        
                                                     </td>
                                                     <td>USA</td>
                                                     <td class="text-end">240</td>
                                                     <td class="text-end">4.36%</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>
-                                                        <div class="flag">
-                                                            <img
-                                                                src="assets/img/flags/au.png"
-                                                                alt="australia"
-                                                            />
-                                                        </div>
-                                                    </td>
+                                                    
                                                     <td>Australia</td>
                                                     <td class="text-end">119</td>
                                                     <td class="text-end">2.16%</td>
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div class="flag">
-                                                            <img
-                                                                src="assets/img/flags/ru.png"
-                                                                alt="russia"
-                                                            />
-                                                        </div>
+                                                        
                                                     </td>
                                                     <td>Russia</td>
                                                     <td class="text-end">1.081</td>
@@ -982,12 +908,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div class="flag">
-                                                            <img
-                                                                src="assets/img/flags/cn.png"
-                                                                alt="china"
-                                                            />
-                                                        </div>
+                                                        
                                                     </td>
                                                     <td>China</td>
                                                     <td class="text-end">1.100</td>
@@ -995,12 +916,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <div class="flag">
-                                                            <img
-                                                                src="assets/img/flags/br.png"
-                                                                alt="brazil"
-                                                            />
-                                                        </div>
+                                                        
                                                     </td>
                                                     <td>Brasil</td>
                                                     <td class="text-end">640</td>
@@ -1058,11 +974,7 @@
                                 <div class="card-list py-4">
                                     <div class="item-list">
                                         <div class="avatar">
-                                            <img
-                                                src="assets/img/jm_denis.jpg"
-                                                alt="..."
-                                                class="avatar-img rounded-circle"
-                                            />
+                                            
                                         </div>
                                         <div class="info-user ms-3">
                                             <div class="username">Jimmy Denis</div>
@@ -1095,11 +1007,7 @@
                                     </div>
                                     <div class="item-list">
                                         <div class="avatar">
-                                            <img
-                                                src="assets/img/talha.jpg"
-                                                alt="..."
-                                                class="avatar-img rounded-circle"
-                                            />
+                                            
                                         </div>
                                         <div class="info-user ms-3">
                                             <div class="username">Talha</div>
@@ -1114,11 +1022,7 @@
                                     </div>
                                     <div class="item-list">
                                         <div class="avatar">
-                                            <img
-                                                src="assets/img/chadengle.jpg"
-                                                alt="..."
-                                                class="avatar-img rounded-circle"
-                                            />
+                                            
                                         </div>
                                         <div class="info-user ms-3">
                                             <div class="username">Chad</div>
