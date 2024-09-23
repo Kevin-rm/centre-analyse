@@ -3174,15 +3174,15 @@
     </div>
 </div>
 
-<script src="{{ asset('assets/js/core/jquery-3.7.1.min.js') }}"></script>
-<script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+<script src="{{ asset("assets/js/core/jquery-3.7.1.min.js") }}"></script>
+<script src="{{ asset("assets/js/core/bootstrap.min.js") }}"></script>
+<script src="{{ asset("assets/js/core/popper.min.js") }}"></script>
 
-<script src="{{ asset('assets/js/plugin/jquery.scrollbar.min.js') }}"></script>
-<script src="{{ asset('assets/js/plugin/jquery.sparkline.min.js') }}"></script>
-<script src="{{ asset('assets/js/plugin/sweetalert.min.js') }}"></script>
+<script src="{{ asset("assets/js/plugin/jquery.scrollbar.min.js") }}"></script>
+<script src="{{ asset("assets/js/plugin/jquery.sparkline.min.js") }}"></script>
+<script src="{{ asset("assets/js/plugin/sweetalert.min.js") }}"></script>
 
-<script src="{{ asset('assets/js/plugin/kaiadmin.min.js') }}"></script>
+<script src="{{ asset("assets/js/plugin/kaiadmin.min.js") }}"></script>
 
 </body>
 </html>
