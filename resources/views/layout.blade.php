@@ -3172,17 +3172,17 @@
             <i class="icon-settings"></i>
         </div>
     </div>
-    <!-- End Custom template -->
 </div>
 
-<script src="{{ asset("js/core/jquery-3.7.1.min.js") }}"></script>
-<script src="{{ asset("js/core/bootstrap.min.js") }}"></script>
-<script src="{{ asset("js/core/popper.min.js") }}"></script>
-<script src="{{ asset("js/core/bootstrap.min.js") }}"></script>
-<script src="{{ asset("js/plugin/jquery.scrollbar.min.js") }}"></script>
-<script src="{{ asset("js/plugin/jquery.sparkline.min.js") }}"></script>
-<script src="{{ asset("js/plugin/sweetalert.min.js") }}"></script>
-<script src="{{ asset("js/plugin/kaiadmin.min.js") }}"></script>
+<script src="{{ asset('assets/js/core/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+
+<script src="{{ asset('assets/js/plugin/jquery.scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugin/jquery.sparkline.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugin/sweetalert.min.js') }}"></script>
+
+<script src="{{ asset('assets/js/plugin/kaiadmin.min.js') }}"></script>
 
 </body>
 </html>
