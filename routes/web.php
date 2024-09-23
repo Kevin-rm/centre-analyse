@@ -7,7 +7,7 @@ Route::get('/', function () {
 });
 
 Route::get('/centre', function () {
-    return view('centre_form');
+    return view('centre_operationnel_charge_form');
 });
 
 Route::get('/centre_charge', function () {
@@ -19,5 +19,5 @@ Route::get('/charge', function () {
 });
 
 Route::get('/unit', function () {
-    return view('unit_oeuvre_form');
+    return view('unite_oeuvre_form');
 });
