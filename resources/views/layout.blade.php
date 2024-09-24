@@ -36,8 +36,6 @@
         <div class="container">
             <div class="page-inner"></div>
         </div>
-
-        @include("footer")
     </div>
 </div>
 
