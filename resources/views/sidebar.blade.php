@@ -1,21 +1,6 @@
 <div class="sidebar" data-background-color="dark">
     <div class="sidebar-logo">
-        <div class="logo-header" data-background-color="dark">
-            <a href="" class="logo">
-                <span class="navbar-brand text-white fs-4 fw-bold">Centre d'analyse</span>
-            </a>
-            <div class="nav-toggle">
-                <button class="btn btn-toggle toggle-sidebar">
-                    <i class="gg-menu-right"></i>
-                </button>
-                <button class="btn btn-toggle sidenav-toggler">
-                    <i class="gg-menu-left"></i>
-                </button>
-            </div>
-            <button class="topbar-toggler more">
-                <i class="gg-more-vertical-alt"></i>
-            </button>
-        </div>
+        @include("logo_header")
     </div>
 
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
@@ -29,7 +14,7 @@
                 </li>
                 <li class="nav-item active">
                     <a data-bs-toggle="collapse" href="#charge" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-coins"></i>
+                        <i class="fas fa-money-bill-wave"></i>
                         <p>Charge</p>
                         <span class="caret"></span>
                     </a>
