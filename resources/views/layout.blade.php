@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title></title>
+    <title>@yield("title", "Centre d'analyse")</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
 
     <script src="{{ asset("assets/js/plugin/webfont.min.js") }}"></script>
@@ -34,7 +34,7 @@
         @include("header")
 
         <div class="container">
-            <div class="page-inner"></div>
+            <div class="page-inner">@yield("content")</div>
         </div>
     </div>
 </div>
@@ -48,6 +48,5 @@
 <script src="{{ asset("assets/js/plugin/sweetalert.min.js") }}"></script>
 
 <script src="{{ asset("assets/js/plugin/kaiadmin.min.js") }}"></script>
-
 </body>
 </html>
