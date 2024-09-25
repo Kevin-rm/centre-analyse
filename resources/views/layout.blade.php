@@ -34,7 +34,13 @@
         @include("header")
 
         <div class="container">
-            <div class="page-inner">@yield("content")</div>
+            <div class="page-inner">
+                <div class="page-header">
+                    <h3 class="fw-bold mb-3">@yield("page_header_title")</h3>
+                    @yield("page_header_content")
+                </div>
+                @yield("content")
+            </div>
         </div>
     </div>
 </div>
