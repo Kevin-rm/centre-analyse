@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>@yield('title', 'Gestion des Charges')</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title></title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
@@ -31,52 +32,123 @@
 <body>
 <div class="wrapper">
     <!-- Sidebar -->
-    <div class="sidebar" data-background-color="dark">
-        <div class="sidebar-logo">
-            <!-- Logo Header -->
-            <div class="logo-header" data-background-color="dark">
-                <a href="" class="logo">
-                    <img
-                        src="assets/img/kaiadmin/logo_light.svg"
-                        alt="navbar brand"
-                        class="navbar-brand"
-                        height="20"
-                    />
-                </a>
-                <div class="nav-toggle">
-                    <button class="btn btn-toggle toggle-sidebar">
-                        <i class="gg-menu-right"></i>
-                    </button>
-                    <button class="btn btn-toggle sidenav-toggler">
-                        <i class="gg-menu-left"></i>
-                    </button>
-                </div>
-                <button class="topbar-toggler more">
-                    <i class="gg-more-vertical-alt"></i>
-                </button>
-            </div>
-            <!-- End Logo Header -->
+<div class="sidebar" data-background-color="dark">
+    <!-- Logo Header -->
+    <div class="logo-header" data-background-color="dark">
+        <a href="#" class="logo">
+            <img
+                src="assets/img/kaiadmin/logo_light.svg"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="20"
+            />
+        </a>
+        <div class="nav-toggle">
+            <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+            </button>
+            <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+            </button>
         </div>
+        <button class="topbar-toggler more">
+            <i class="gg-more-vertical-alt"></i>
+        </button>
+    </div>
+    <!-- End Logo Header -->
 
-        <div class="sidebar-wrapper scrollbar scrollbar-inner">
-            <div class="sidebar-content">
-                <ul class="nav nav-secondary">
-                    <li class="nav-item active">
-                        <a
-                            data-bs-toggle="collapse"
-                            href="#dashboard"
-                            class="collapsed"
-                            aria-expanded="false"
-                        >
-                            <i class="fas fa-home"></i>
-                            <p>Dashboard</p>
-                            <span class="caret"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Sidebar Wrapper -->
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+                <!-- Dashboard Menu -->
+                <li class="nav-item active">
+                    <a
+                        data-bs-toggle="collapse"
+                        href="#dashboardMenu"
+                        class="collapsed"
+                        aria-expanded="false"
+                    >
+                        <i class="fas fa-home"></i>
+                        <p>Dashboard</p>
+                        <span class="caret"></span>
+                    </a>
+                    
+                </li>
+
+                <!-- Forms Menu -->
+                <li class="nav-item">
+                    <a
+                        data-bs-toggle="collapse"
+                        href="#formsMenu"
+                        class="collapsed"
+                        aria-expanded="false"
+                    >
+                        <i class="fas fa-pen-square"></i>
+                        <p>Forms</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="formsMenu">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="charge_form">
+                                    <span class="sub-item">Charge</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="centre_form">
+                                    <span class="sub-item">Centre</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="unite_form">
+                                    <span class="sub-item">Unité</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Tables Menu -->
+                <li class="nav-item">
+                    <a
+                        data-bs-toggle="collapse"
+                        href="#tablesMenu"
+                        class="collapsed"
+                        aria-expanded="false"
+                    >
+                        <i class="fas fa-table"></i>
+                        <p>Tables</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="tablesMenu">
+                        <ul class="nav nav-collapse">
+                        <ul class="nav nav-collapse">
+                            <li>
+                                <a href="forms/forms.html">
+                                    <span class="sub-item">Charge</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="forms/forms.html">
+                                    <span class="sub-item">Centre</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="forms/forms.html">
+                                    <span class="sub-item">Unité</span>
+                                </a>
+                            </li>
+                        </ul>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
+    <!-- End Sidebar Wrapper -->
+</div>
+
     <!-- End Sidebar -->
 
     <div class="main-panel">
@@ -190,6 +262,7 @@
 
         <div class="container">
             <div class="page-inner">
+                @yield('content')
             </div>
         </div>
 
