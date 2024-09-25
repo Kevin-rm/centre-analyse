@@ -1,6 +1,6 @@
 <ul class="breadcrumbs mb-3">
     <li class="nav-home">
-        <a href="{{ route($route_to_index) }}">
+        <a href="#">
             <i class="icon-home"></i>
         </a>
     </li>
