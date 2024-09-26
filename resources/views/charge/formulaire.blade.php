@@ -10,78 +10,101 @@
 @endsection
 
 @section("content")
-<form action="" method="POST">
-        @csrf
-        <h1>Charge formulaire</h1>
-        <div class="form-group row">
-        <label for="nom" class="col-form-label col-sm-1">Nom</label>
-            <div class="col-sm-5">
-                <input type="text" name="nom" id="nom" class="form-control">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Insertion</div>
+                </div>
+                <form action="" method="post">
+                    @csrf
+                    <div class="card-body px-4">
+                        <div class="form-group row">
+                            <label for="nom" class="col-form-label col-sm-1">Nom</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="nom" id="nom" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="unite-oeuvre" class="col-form-label col-sm-1">Unité</label>
+                            <div class="col-sm-5">
+                                <select class="form-control form-select" id="unite-oeuvre">
+                                    <option>Kg</option>
+                                    <option>Litre</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="nature" class="col-form-label col-sm-1">Nature</label>
+                            <div class="col-sm-5">
+                                <select class="form-control form-select" id="nature">
+                                    <option value="0">Variable</option>
+                                    <option value="1">Fixe</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-form-label col-sm-1">Centres</label>
+                            <div class="col-sm-2">
+                                <button id="ajout-centre" type="button" class="btn btn-primary" disabled>
+                                    Ajouter
+                                </button>
+                            </div>
+                            <div id="centres">
+                                <div class="row mt-2">
+                                    <div class="col-sm-5 offset-1">
+                                        <select class="form-control form-select centre">
+                                            <option selected>Choisir un centre</option>
+                                            <option>Centre1</option>
+                                            <option>Centre2</option>
+                                            <option>Centre3</option>
+                                            <option>Centre4</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text"
+                                               name="pourcentage"
+                                               class="form-control pourcentage" placeholder="Pourcentage" required
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button class="btn btn-success" type="submit">Enregistrer</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
+@endsection
 
-        <div class="form-group row">    
-            <div class="col-sm-1">
-            <label for="unite"
-                > Unité </label
-                >
-            </div>
-            <div class="col-sm-5">
-            <select class="form-control" id="unite">
-                <option>Kg</option>
-                <option>Litre</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group row">    
-            <div class="col-sm-1">
-            <label for="nature"
-                > Nature</label
-                >
-            </div>
-            <div class="col-sm-5">
-            <select class="form-control" id="nature">
-                <option>Variable</option>
-                <option>Fixe</option>
-                </select>
-            </div>
-        </div>
-        <div id="fields-container">
-            <div class="form-group row">
-                <div class="col-sm-1"><label for="">Pourcentage</label></div>
-                <div class="col-sm-4">
-                    <input type="text" name="pourcentage" class="form-control pourcentage" required>
-                </div>
-                <div class="col-sm-4">
-                    <select class="form-control centre">
-                        <option selected>Choisissez</option>
-                        <option>Centre1</option>
-                        <option>Centre2</option>
-                        <option>Centre3</option>
-                        <option>Centre4</option>
-                    </select>
-                </div>    
-                <div class="col-sm-2">
-                    <button type="button" class="btn btn-primary add-field" disabled>+</button>
-                </div>
-            </div>
-        </div>
-        <div class="mt-3" style="margin-left:8rem">
-            <button type="submit" class="btn btn-primary">Valider</button>
-        </div>
-        <script>
-            const centres = ["Centre1", "Centre2", "Centre3", "Centre4"];
-            document.getElementById('fields-container').addEventListener('click', function (e) {
-                if (e.target.classList.contains('add-field')) {
-                    const selectedCentres = Array.from(document.querySelectorAll('.centre')).map(select => select.value);
-                    const availableCentres = centres.filter(c => !selectedCentres.includes(c));
-                    if (availableCentres.length > 0) {
-                        document.querySelectorAll('.add-field').forEach(button => button.remove());
-                        const fieldContainer = document.getElementById('fields-container');
-                        const newFieldGroup = document.createElement('div');
-                        newFieldGroup.classList.add('form-group', 'row');
-                        newFieldGroup.innerHTML = `
-                            <div class="col-sm-1"></div>    
+@section("scripts")
+    <script>
+        /* const centres = ["Centre1", "Centre2", "Centre3", "Centre4"];
+        document.getElementById('fields-container').addEventListener('change', function (e) {
+            if (e.target.classList.contains('centre')) {
+                const addButton = e.target.closest('.form-group').querySelector('.add-field');
+                if (e.target.value !== "") {
+                    addButton.disabled = false;
+                } else {
+                    addButton.disabled = true;
+                }
+            }
+        });
+
+        document.getElementById('fields-container').addEventListener('click', function (e) {
+            if (e.target.classList.contains('add-field')) {
+                const selectedCentres = Array.from(document.querySelectorAll('.centre')).map(select => select.value);
+                const availableCentres = centres.filter(c => !selectedCentres.includes(c));
+                if (availableCentres.length > 0) {
+                    document.querySelectorAll('.add-field').forEach(button => button.remove());
+                    const fieldContainer = document.getElementById('fields-container');
+                    const newFieldGroup = document.createElement('div');
+                    newFieldGroup.classList.add('form-group', 'row');
+                    newFieldGroup.innerHTML = `
+                            <div class="col-sm-1"></div>
                             <div class="col-sm-4">
                                 <input type="text" name="pourcentage" class="form-control pourcentage" required>
                             </div>
@@ -95,24 +118,11 @@
                                 <button type="button" class="btn btn-primary add-field" disabled>+</button>
                             </div>
                         `;
-                        fieldContainer.appendChild(newFieldGroup);
-                    } else {
-                        alert('Tous les centres sont déjà sélectionnés !');
-                    }
+                    fieldContainer.appendChild(newFieldGroup);
+                } else {
+                    alert('Tous les centres sont déjà sélectionnés !');
                 }
-            });
-
-            document.getElementById('fields-container').addEventListener('change', function (e) {
-                if (e.target.classList.contains('centre')) {
-                    const addButton = e.target.closest('.form-group').querySelector('.add-field');
-                    if (e.target.value !== "") {
-                        addButton.disabled = false;
-                    } else {
-                        addButton.disabled = true;
-                    }
-                }
-            });
-        </script>
-    </form>
-
+            }
+        }); */
+    </script>
 @endsection

@@ -12,7 +12,7 @@ class UniteOeuvreController extends Controller
     /**
      * Show the form for creating the resource.
      */
-    public function create()
+    public function create(): View|Factory|Application
     {
         return view("unite-oeuvre.formulaire");
     }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>@yield('title', 'Gestion des Charges')</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>@yield("title", "Centre d'analyse")</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
@@ -55,5 +54,6 @@
 <script src="{{ asset("assets/js/plugin/sweetalert.min.js") }}"></script>
 
 <script src="{{ asset("assets/js/plugin/kaiadmin.min.js") }}"></script>
+@yield("scripts")
 </body>
 </html>
