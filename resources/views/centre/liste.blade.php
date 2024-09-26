@@ -10,5 +10,34 @@
 @endsection
 
 @section("content")
-    <p>Liste de centre</p>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table
+                        id="basic-datatables"
+                        class="display table table-striped table-hover"
+                        >
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>1</th>
+                                <td>Administration</td>
+                                <td>Structure</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    
 @endsection
