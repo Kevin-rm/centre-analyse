@@ -29,7 +29,6 @@
                                 <a href="{{ route("charge.create") }}">
                                     <span class="sub-item">Formulaire</span>
                                 </a>
-                            </li>
                         </ul>
                     </div>
                 </li>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>@yield("title", "Centre d'analyse")</title>
+    <title>Centre d'analyse</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport"/>
 
     <script src="{{ asset("assets/js/plugin/webfont.min.js") }}"></script>
@@ -49,10 +49,12 @@
 <script src="{{ asset("assets/js/core/popper.min.js") }}"></script>
 <script src="{{ asset("assets/js/core/bootstrap.min.js") }}"></script>
 
+<script src="{{ asset("assets/js/plugin/datatables.min.js") }}"></script>
 <script src="{{ asset("assets/js/plugin/jquery.scrollbar.min.js") }}"></script>
 <script src="{{ asset("assets/js/plugin/jquery.sparkline.min.js") }}"></script>
 <script src="{{ asset("assets/js/plugin/sweetalert.min.js") }}"></script>
 
 <script src="{{ asset("assets/js/plugin/kaiadmin.min.js") }}"></script>
+@yield("scripts")
 </body>
 </html>
