@@ -49,6 +49,7 @@
 <script src="{{ asset("assets/js/core/popper.min.js") }}"></script>
 <script src="{{ asset("assets/js/core/bootstrap.min.js") }}"></script>
 
+<script src="{{ asset("assets/js/plugin/datatables.min.js") }}"></script>
 <script src="{{ asset("assets/js/plugin/jquery.scrollbar.min.js") }}"></script>
 <script src="{{ asset("assets/js/plugin/jquery.sparkline.min.js") }}"></script>
 <script src="{{ asset("assets/js/plugin/sweetalert.min.js") }}"></script>

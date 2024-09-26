@@ -46,15 +46,15 @@
                         <div class="form-group row">
                             <label for="" class="col-form-label col-sm-1">Centres</label>
                             <div class="col-sm-2">
-                                <button id="ajout-centre" type="button" class="btn btn-primary" disabled>
+                                <button id="ajout-centre" type="button" class="btn btn-primary">
                                     Ajouter
                                 </button>
                             </div>
+
                             <div id="centres">
                                 <div class="row mt-2">
                                     <div class="col-sm-5 offset-1">
                                         <select class="form-control form-select centre">
-                                            <option selected>Choisir un centre</option>
                                             <option>Centre1</option>
                                             <option>Centre2</option>
                                             <option>Centre3</option>
@@ -82,47 +82,37 @@
 
 @section("scripts")
     <script>
-        /* const centres = ["Centre1", "Centre2", "Centre3", "Centre4"];
-        document.getElementById('fields-container').addEventListener('change', function (e) {
-            if (e.target.classList.contains('centre')) {
-                const addButton = e.target.closest('.form-group').querySelector('.add-field');
-                if (e.target.value !== "") {
-                    addButton.disabled = false;
-                } else {
-                    addButton.disabled = true;
-                }
-            }
-        });
+        const centres = ["Centre1", "Centre2", "Centre3", "Centre4"];
+        document.getElementById('ajout-centre').addEventListener('click', function () {
+    console.log('Bouton Ajouter cliqué');
+    const selectedCentres = Array.from(document.querySelectorAll('.centre')).map(select => select.value);
+    const availableCentres = centres.filter(c => !selectedCentres.includes(c));
 
-        document.getElementById('fields-container').addEventListener('click', function (e) {
-            if (e.target.classList.contains('add-field')) {
-                const selectedCentres = Array.from(document.querySelectorAll('.centre')).map(select => select.value);
-                const availableCentres = centres.filter(c => !selectedCentres.includes(c));
-                if (availableCentres.length > 0) {
-                    document.querySelectorAll('.add-field').forEach(button => button.remove());
-                    const fieldContainer = document.getElementById('fields-container');
-                    const newFieldGroup = document.createElement('div');
-                    newFieldGroup.classList.add('form-group', 'row');
-                    newFieldGroup.innerHTML = `
-                            <div class="col-sm-1"></div>
-                            <div class="col-sm-4">
-                                <input type="text" name="pourcentage" class="form-control pourcentage" required>
-                            </div>
-                            <div class="col-sm-4">
-                                <select class="form-control centre">
-                                    <option value="" selected>Choisissez</option> <!-- Option par défaut -->
-                                    ${availableCentres.map(c => `<option value="${c}">${c}</option>`).join('')}
-                                </select>
-                            </div>
-                            <div class="col-sm-2">
-                                <button type="button" class="btn btn-primary add-field" disabled>+</button>
-                            </div>
-                        `;
-                    fieldContainer.appendChild(newFieldGroup);
-                } else {
-                    alert('Tous les centres sont déjà sélectionnés !');
-                }
-            }
-        }); */
+    if (availableCentres.length > 0) {
+        const centresContainer = document.getElementById('centres');
+        const newFieldGroup = document.createElement('div');
+        newFieldGroup.classList.add('row', 'mt-2');
+
+        newFieldGroup.innerHTML = `
+            <div class="col-sm-5 offset-1">
+                <select class="form-control form-select centre">
+                    ${availableCentres.map(c => `<option value="${c}">${c}</option>`).join('')}
+                </select>
+            </div>
+            <div class="col-sm-2">
+                <input type="text"
+                    name="pourcentage"
+                    class="form-control pourcentage"
+                    placeholder="Pourcentage"
+                    required
+                />
+            </div>
+        `;
+        centresContainer.appendChild(newFieldGroup);
+    } else {
+        alert('Tous les centres sont déjà sélectionnés !');
+    }
+});
+
     </script>
 @endsection
