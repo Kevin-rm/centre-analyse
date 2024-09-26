@@ -62,7 +62,8 @@
                                     <div class="col-sm-2">
                                         <input type="text"
                                                name="pourcentage"
-                                               class="form-control pourcentage" placeholder="Pourcentage" required
+                                               class="form-control" placeholder="Pourcentage"
+                                               required
                                         />
                                     </div>
                                 </div>
@@ -81,36 +82,35 @@
 @section("scripts")
     <script>
         const centres = ["Centre1", "Centre2", "Centre3", "Centre4"];
-        document.getElementById('ajout-centre').addEventListener('click', function () {
-    console.log('Bouton Ajouter cliqué');
-    const selectedCentres = Array.from(document.querySelectorAll('.centre')).map(select => select.value);
-    const availableCentres = centres.filter(c => !selectedCentres.includes(c));
 
-    if (availableCentres.length > 0) {
-        const centresContainer = document.getElementById('centres');
-        const newFieldGroup = document.createElement('div');
-        newFieldGroup.classList.add('row', 'mt-2');
+        $(document).ready(() => {
+            $("#ajout-centre").on("click", () => {
+                const selectedCentres = [];
+                $(".centre").each(function() {
+                    selectedCentres.push($(this).val());
+                });
 
-        newFieldGroup.innerHTML = `
-            <div class="col-sm-5 offset-1">
-                <select class="form-control form-select centre">
-                    ${availableCentres.map(c => `<option value="${c}">${c}</option>`).join('')}
-                </select>
-            </div>
-            <div class="col-sm-2">
-                <input type="text"
-                    name="pourcentage"
-                    class="form-control pourcentage"
-                    placeholder="Pourcentage"
-                    required
-                />
-            </div>
-        `;
-        centresContainer.appendChild(newFieldGroup);
-    } else {
-        alert('Tous les centres sont déjà sélectionnés !');
-    }
-});
+                const availableCentres = centres.filter(c => !selectedCentres.includes(c));
+                const template = `
+                <div class="row mt-2">
+                    <div class="col-sm-5 offset-1">
+                        <select class="form-control form-select centre">
+                           ${availableCentres.map(c => `<option value="${c}">${c}</option>`).join("")}
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text"
+                            name="pourcentage"
+                            class="form-control"
+                            placeholder="Pourcentage"
+                            required
+                        />
+                    </div>
+                </div>`;
 
+                if (availableCentres.length > 0) $('#centres').append(template);
+                else alert("Tous les centres sont déjà sélectionnés !");
+            });
+        });
     </script>
 @endsection
