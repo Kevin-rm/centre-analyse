@@ -1,7 +1,5 @@
 @extends("layout")
 
-@section("title", "Formulaire centre")
-
 @section("page_header_title", "Centre")
 @section("page_header_content")
     @component("shared.breadcrumbs")

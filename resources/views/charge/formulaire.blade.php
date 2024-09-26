@@ -1,7 +1,5 @@
 @extends("layout")
 
-@section("title", "Formulaire de charge")
-
 @section("page_header_title", "Charges")
 @section("page_header_content")
     @component("shared.breadcrumbs")
