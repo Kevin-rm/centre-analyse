@@ -21,11 +21,14 @@
                     <div class="collapse" id="charge">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href=""><span class="sub-item">Liste</span></a>
+                                <a href="{{ route("charge.show") }}">
+                                    <span class="sub-item">Liste</span>
+                                </a>
                             </li>
                             <li>
-                                <a href=""><span class="sub-item">Formulaire</span></a>
-                            </li>
+                                <a href="{{ route("charge.create") }}">
+                                    <span class="sub-item">Formulaire</span>
+                                </a>
                         </ul>
                     </div>
                 </li>
@@ -38,10 +41,14 @@
                     <div class="collapse" id="centre">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href=""><span class="sub-item">Liste</span></a>
+                                <a href="{{ route("centre.show") }}">
+                                    <span class="sub-item">Liste</span>
+                                </a>
                             </li>
                             <li>
-                                <a href=""><span class="sub-item">Formulaire</span></a>
+                                <a href="{{ route("centre.create") }}">
+                                    <span class="sub-item">Formulaire</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -55,10 +62,14 @@
                     <div class="collapse" id="unite-oeuvre">
                         <ul class="nav nav-collapse">
                             <li>
-                                <a href=""><span class="sub-item">Liste</span></a>
+                                <a href="{{ route("unite_oeuvre.show") }}">
+                                    <span class="sub-item">Liste</span>
+                                </a>
                             </li>
                             <li>
-                                <a href=""><span class="sub-item">Formulaire</span></a>
+                                <a href="{{ route("unite_oeuvre.create") }}">
+                                    <span class="sub-item">Formulaire</span>
+                                </a>
                             </li>
                         </ul>
                     </div>

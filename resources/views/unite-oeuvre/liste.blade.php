@@ -1,8 +1,8 @@
 @extends("layout")
 
-@section("title", "Liste des centres")
+@section("title", "Liste des unités d'oeuvre")
 
-@section("page_header_title", "Centre")
+@section("page_header_title", "Unité d'oeuvre")
 @section("page_header_content")
     @component("shared.breadcrumbs")
         @slot("current", "Liste")
@@ -10,5 +10,5 @@
 @endsection
 
 @section("content")
-    <p>Liste de centre</p>
+    <p>Liste des unités d'oeuvre</p>
 @endsection

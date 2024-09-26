@@ -1,5 +1,5 @@
 <div class="logo-header" data-background-color="dark">
-    <a href="" class="logo">
+    <a href="{{ route("home.redirect") }}" class="logo">
         <span class="navbar-brand text-white fs-4 fw-bold">Centre d'analyse</span>
     </a>
     <div class="nav-toggle">
