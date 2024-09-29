@@ -1,4 +1,4 @@
-@extends("layout")
+@extends('layout')
 
 @section("page_header_title", "Centre")
 @section("page_header_content")
@@ -7,7 +7,7 @@
     @endcomponent
 @endsection
 
-@section("content")
+@section('content')
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
@@ -22,14 +22,26 @@
                                     <th>Id</th>
                                     <th>Nom</th>
                                     <th>Type</th>
+                                    <th colspan="2">Action</th>
                                 </tr>
                             </thead>
+
                             <tbody>
+                                @if (count($all_centre) > 0)
+                                    @foreach ($all_centre as $item)
+                                        <tr>
+                                            <td>{{$loop->iteration}} </td>
+                                            <td>{{$item->nom_centre_opp}} </td>
+                                            <td>{{$item->est_structure ? 'Structure' : 'Opérationnel' }}</td>
+                                            <td><a href="{{route('centre.edit',['id' =>$item->id_centre_opp])}}" class="btn btn-primary btn-sm">Edit</a></td>
+                                            <td><a href="{{route('centre.destroy',['id' =>$item->id_centre_opp])}}" class="btn btn-danger btn-sm">Delete</a></td>
+                                          </tr>
+                                    @endforeach
+                                @else
                                 <tr>
-                                    <td>1</td>
-                                    <td>Administrator</td>
-                                    <td>Statique</td>
+                                  <td colspan="5">no centre operationnel found</td>
                                 </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
