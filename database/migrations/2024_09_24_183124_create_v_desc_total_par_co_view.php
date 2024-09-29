@@ -14,15 +14,14 @@ return new class extends Migration
     {
         DB::statement("
             CREATE OR REPLACE VIEW v_desc_total_par_co AS
-            SELECT 
-                id_centre_opp,
-                SUM(CASE WHEN nature = TRUE THEN total * pourcentage ELSE 0 END) AS sum_variable,
-                SUM(CASE WHEN nature = FALSE THEN total * pourcentage ELSE 0 END) AS sum_fixe,
-                SUM(CASE WHEN nature = TRUE OR nature = FALSE THEN total * pourcentage ELSE 0 END) AS sum_variable_fixe
-            FROM 
-                v_all_data_view
-            GROUP BY 
-                id_centre_opp;
+SELECT 
+    id_centre_opp,
+    est_structure,
+    SUM(CASE WHEN nature = TRUE THEN total * pourcentage  ELSE 0 END) AS sum_variable,
+    SUM(CASE WHEN nature = FALSE THEN total * pourcentage ELSE 0 END) AS sum_fixe,
+    SUM(CASE WHEN nature = TRUE OR nature = FALSE THEN total * pourcentage ELSE 0 END) AS sum_variable_fixe
+FROM v_all_data
+GROUP BY id_centre_opp,est_structure;
         ");
     }
 
