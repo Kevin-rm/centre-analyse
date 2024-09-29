@@ -9,10 +9,11 @@ class PourcentageCharge extends Model
 {
     use HasFactory;
 
+    protected $table = "centre_opp_charge";
     protected $fillable = [
+        'id_charge', // Relation vers Charge
+        'id_centre_opp', // Relation vers CentreOperationel
         'pourcentage',
-        'charge_id', // Relation vers Charge
-        'centre_operationel_id', // Relation vers CentreOperationel
     ];
 
     public function charge()

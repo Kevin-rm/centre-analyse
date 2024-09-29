@@ -9,17 +9,17 @@ class CentreOperationel extends Model
 {
     use HasFactory;
 
+    protected $table='centre_opp';
+    protected $primaryKey='id_centre_opp';
+    public $incrementing=true;
+    protected $keyType='int';
     protected $fillable = [
-        'nom',
+        'nom_centre_opp',
+        'est_structure',
     ];
-
-    public function charges()
+    
+    public function pourcentageCharge()
     {
-        return $this->hasMany(Charge::class);
-    }
-
-    public function pourcentageCharges()
-    {
-        return $this->hasMany(PourcentageCharge::class);
+        return $this->hasMany(PourcentageCharge::class, 'id_centre_opp', 'id_centre_opp');
     }
 }

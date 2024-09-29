@@ -1,0 +1,49 @@
+<script>
+    const centres = @json($centre_opp);
+    const oldCentres = @json(old('centre_opp', []));
+    const oldPourcentages = @json(old('pourcentage', []));
+    const errors = @json($errors->toArray());  // Convert errors to JavaScript
+
+    // Function to add new centre row
+    function addCentre(centreValue = '', pourcentageValue = '', errorCentre = '', errorPourcentage = '') {
+        const centresContainer = document.getElementById('centres');
+        const newFieldGroup = document.createElement('div');
+        newFieldGroup.classList.add('row', 'mt-2');
+
+        newFieldGroup.innerHTML = `
+            <div class="col-sm-5 offset-1">
+                <select class="form-control form-select centre" name="centre_opp[]">
+                    ${centres.map(c => `<option value="${c.id_centre_opp}" ${centreValue == c.id_centre_opp ? 'selected' : ''}>${c.nom_centre_opp}</option>`).join('')}
+                </select>
+                ${errorCentre ? `<span class="text-danger">${errorCentre}</span>` : ''}
+            </div>
+            <div class="col-sm-2">
+                <input type="text" name="pourcentage[]" class="form-control pourcentage" placeholder="Pourcentage" value="${pourcentageValue}" required />
+                ${errorPourcentage ? `<span class="text-danger">${errorPourcentage}</span>` : ''}
+            </div>
+        `;
+        centresContainer.appendChild(newFieldGroup);
+    }
+
+    // Add centres and pourcentages from old values if validation fails
+    if (oldCentres.length > 0) {
+        oldCentres.forEach((centre, index) => {
+            const centreError = errors[`centre_opp.${index}`] ? errors[`centre_opp.${index}`][0] : '';
+            const pourcentageError = errors[`pourcentage.${index}`] ? errors[`pourcentage.${index}`][0] : '';
+            addCentre(centre, oldPourcentages[index], centreError, pourcentageError);
+        });
+    }
+
+    // Event listener to add new centre dynamically
+    document.getElementById('ajout-centre').addEventListener('click', function() {
+        console.log('Bouton Ajouter cliqué');
+        const selectedCentres = Array.from(document.querySelectorAll('.centre')).map(select => select.value);
+        const availableCentres = centres.filter(c => !selectedCentres.includes(c.id_centre_opp.toString()));
+
+        if (availableCentres.length > 0) {
+            addCentre();  // Add new empty centre without old value
+        } else {
+            alert('Tous les centres sont déjà sélectionnés !');
+        }
+    });
+</script>

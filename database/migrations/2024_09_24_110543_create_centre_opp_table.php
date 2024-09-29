@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('centre_opp', function (Blueprint $table) {
             $table->id('id_centre_opp'); // serial primary key
             $table->string('nom_centre_opp'); // varchar
+            $table->boolean('est_structure');
             $table->timestamps();
         });
     }

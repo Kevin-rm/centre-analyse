@@ -8,16 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Charge extends Model
 {
     use HasFactory;
+    protected $table='charge';
+    protected $primaryKey='id_charge';
+    public $incrementing=true;
+    protected $keyType='int';
     protected $fillable = [
-        'nom_rubrique',
+        'nom_charge',
         'total',
-        'unite_d_oeuvre',
-        'est_variable',
-        'centre_operationel_id', // Relation vers CentreOperationel
+        'nature',
+        'id_unite_oeuvre',
     ];
 
-    public function centreOperationel()
+    public function charges()
     {
-        return $this->belongsTo(CentreOperationel::class);
+        return $this->hasMany(Charge::class, 'id_unite_oeuvre', 'id_unite_oeuvre');
     }
 }

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('centre_opp_charge', function (Blueprint $table) {
             $table->id(); // serial primary key
             $table->unsignedBigInteger('id_centre_opp');
-            $table->foreign('id_centre_opp')->references('id_centre_opp')->on('centre_opp')->onDelete('cascade'); // foreign key reference
+            $table->foreign('id_centre_opp')->references('id_centre_opp')->on('centre_opp')->onDelete('restrict'); // foreign key reference
             $table->unsignedBigInteger('id_charge');
-            $table->foreign('id_charge')->references('id_charge')->on('charge')->onDelete('cascade'); // foreign key reference
+            $table->foreign('id_charge')->references('id_charge')->on('charge')->onDelete('restrict'); // foreign key reference
             $table->float('pourcentage'); // float
             $table->timestamps();
         });
