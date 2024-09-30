@@ -162,40 +162,39 @@ GROUP BY ep.id_etat_produit, ep.nom_etat, uo.nom_unite_oeuvre
 ORDER BY ep.id_etat_produit ASC;
 
 
+
 -- Insertion de données dans la table unite_oeuvre
 INSERT INTO unite_oeuvre (nom_unite_oeuvre)
-VALUES
-    ('kg'),
-    ('tonne'),
-    ('kw'),
-    ('litre');
-
+VALUES 
+    ('Unité de Production A'),
+    ('Unité de Production B'),
+    ('Unité de Logistique');
 
 -- Insertion de données dans la table centre_opp
-INSERT INTO centre_opp (nom_centre_opp, est_structure)
-VALUES
-    ('ADMIN', TRUE),
-    ('Centre 2', FALSE),
-    ('Centre 3', FALSE);
+INSERT INTO centre_opp (nom_centre_opp)
+VALUES 
+    ('Centre Opérationnel 1'),
+    ('Centre Opérationnel 2'),
+    ('Centre Opérationnel 3');
 
 -- Insertion de données dans la table charge
 INSERT INTO charge (nom_charge, total, nature, id_unite_oeuvre)
-VALUES
-    ('Electricité', 1000.50, TRUE, 3),  -- TRUE pour nature (par exemple: récurrent)
-    ('Eau', 500.75, TRUE, 4),
+VALUES 
+    ('Electricité', 1000.50, TRUE, 1),  -- TRUE pour nature (par exemple: récurrent)
+    ('Eau', 500.75, TRUE, 1),
     ('Salaries', 2000.00, FALSE, 2),   -- FALSE pour nature (par exemple: non récurrent)
-    ('Maintenance', 800.20, FALSE, 3);
+    ('Maintenance', 800.20, TRUE, 3);
 
 
 -- Insertion de données dans la table centre_opp_charge (chaque charge dans chaque centre)
 INSERT INTO centre_opp_charge (id_centre_opp, id_charge, pourcentage)
-VALUES
+VALUES 
     -- Répartition pour la charge 'Electricité' (id_charge = 1)
     (1, 1, 0.33),
     (2, 1, 0.33),
     (3, 1, 0.34), -- On ajuste légèrement le dernier pourcentage pour obtenir 100%
 
-    -- Répartition pour la charge 'Eau' (id_charge = 2)
+    -- Répartition pour la charge 'Eau' (id_c :harge = 2)
     (1, 2, 0.33),
     (2, 2, 0.33),
     (3, 2, 0.34),
@@ -210,23 +209,53 @@ VALUES
     (2, 4, 0.33),
     (3, 4, 0.34);
 
+    
 
-INSERT INTO etat_produit (id_unite_oeuvre, nom_etat)
+
+
+    -- Insertion dans la table 'unite_oeuvre'
+INSERT INTO unite_oeuvre (nom_unite_oeuvre)
 VALUES
-    (1, 'Produit A'),  -- Produit A mesuré en kg
-    (2, 'Produit B'),  -- Produit B mesuré en tonne
-    (3, 'Produit C'),  -- Produit C mesuré en kw
-    (4, 'Produit D');  -- Produit D mesuré en litre
+('Kilogramme'),
+('Tonne'),
+('Hectare');
+
+-- Insertion dans la table 'centre_opp'
+INSERT INTO centre_opp (nom_centre_opp, est_structure)
+VALUES
+('Ferme Nord', FALSE),
+('Silo Central', TRUE),
+('Usine de Transformation', TRUE);
+
+-- Insertion dans la table 'charge'
+INSERT INTO charge (nom_charge, total, nature, id_unite_oeuvre)
+VALUES
+('Coût de semence', 5000, TRUE, 1), -- charge variable (en kilogrammes)
+('Coût d’engrais', 3000, TRUE, 1), -- charge variable
+('Coût de moissonneuse', 10000, FALSE, 2), -- charge fixe (en tonnes)
+('Coût d’irrigation', 2000, TRUE, 1), -- charge variable
+('Coût de stockage', 8000, FALSE, 2), -- charge fixe
+
+-- Insertion dans la table 'centre_opp_charge'
+INSERT INTO centre_opp_charge (id_centre_opp, id_charge, pourcentage)
+VALUES
+(1, 1, 0.60), -- Ferme Nord, Coût de semence
+(1, 2, 0.50), -- Ferme Nord, Coût d’engrais
+(2, 3, 0.40), -- Silo Central, Coût de moissonneuse
+(3, 5, 0.70), -- Usine de Transformation, Coût de stockage
+(1, 4, 0.30); -- Ferme Nord, Coût d’irrigation
 
 
--- Insertion de données dans la table etat_produit_centre_assoc
+-- Insertion dans la table 'etat_produit'
+INSERT INTO etat_produit (id_unite_oeuvre,nom_etat)
+VALUES
+(1,'En production'),
+(2,'Stocké'),
+(3,'Transformé');
+
+-- Insertion dans la table 'etat_produit_centre_assoc'
 INSERT INTO etat_produit_centre_assoc (id_etat_produit, id_centre_opp)
 VALUES
-    (1, 1),  -- Produit A associé au centre d'opposition ADMIN
-    (1, 2),  -- Produit A associé au centre d'opposition Centre 2
-    (2, 1),  -- Produit B associé au centre d'opposition ADMIN
-    (2, 3),  -- Produit B associé au centre d'opposition Centre 3
-    (3, 2),  -- Produit C associé au centre d'opposition Centre 2
-    (3, 3),  -- Produit C associé au centre d'opposition Centre 3
-    (4, 1),  -- Produit D associé au centre d'opposition ADMIN
-    (4, 2);  -- Produit D associé au centre d'opposition Centre 2
+(1, 1), -- En production à la Ferme Nord
+(2, 2), -- Stocké au Silo Central
+(3, 3); -- Transformé à l'Usine de Transformation
