@@ -9,7 +9,7 @@ class VRepartition extends Model
 {
     use HasFactory;
     public $timestamps = false;
-
+    protected $table = "v_repartition";
     protected $fillable = [
         'id_centre_opp',
         'cout_direct',

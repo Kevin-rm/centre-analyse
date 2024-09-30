@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnalyseController;
 use App\Http\Controllers\CentreController;
 use App\Http\Controllers\ChargeController;
 use App\Http\Controllers\UniteOeuvreController;
@@ -13,6 +14,9 @@ Route::prefix("charge")->controller(ChargeController::class)->group(function () 
     Route::post("/store","store")->name("charge.store");
 });
 
+Route::prefix("analyse")->controller(AnalyseController::class)->group(function(){
+    Route::get("/","show")->name("analyse.show");
+});
 
 Route::view("/analyse", "analyse")->name("analyse");
 

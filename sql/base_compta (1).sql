@@ -30,6 +30,17 @@ create table centre_opp_charge (
     pourcentage float
 );
 
+create table etat_produit (
+    id_etat_produit serial primary key,
+    id_unite_oeuvre int,
+    nom_etat varchar
+);
+
+create table etat_produit_centre_assoc(
+    id_etat_produit int,
+    id_centre_opp int
+);
+
 CREATE OR REPLACE VIEW v_all_data AS
 SELECT 
     ch.id_charge,
@@ -132,6 +143,20 @@ FROM
 WHERE
     est_structure = FALSE;
 
+
+CREATE OR REPLACE VIEW cout_grain AS
+SELECT 
+    epca.id_centre_opp,
+    ep.*,
+    t.sum_variable_fixe as value
+FROM 
+    etat_produit_centre_assoc epca
+JOIN 
+    etat_produit ep ON epca.id_etat_produit = ep.id_etat_produit
+JOIN 
+    v_desc_total_par_co t ON epca.id_centre_opp = t.id_centre_opp;
+
+
 -- Insertion de données dans la table unite_oeuvre
 INSERT INTO unite_oeuvre (nom_unite_oeuvre)
 VALUES 
@@ -179,3 +204,24 @@ VALUES
     (1, 4, 0.33),
     (2, 4, 0.33),
     (3, 4, 0.34);
+
+
+INSERT INTO etat_produit (id_unite_oeuvre, nom_etat)
+VALUES 
+    (1, 'Produit A'),  -- Produit A mesuré en kg
+    (2, 'Produit B'),  -- Produit B mesuré en tonne
+    (3, 'Produit C'),  -- Produit C mesuré en kw
+    (4, 'Produit D');  -- Produit D mesuré en litre
+
+
+-- Insertion de données dans la table etat_produit_centre_assoc
+INSERT INTO etat_produit_centre_assoc (id_etat_produit, id_centre_opp)
+VALUES 
+    (1, 1),  -- Produit A associé au centre d'opposition ADMIN
+    (1, 2),  -- Produit A associé au centre d'opposition Centre 2
+    (2, 1),  -- Produit B associé au centre d'opposition ADMIN
+    (2, 3),  -- Produit B associé au centre d'opposition Centre 3
+    (3, 2),  -- Produit C associé au centre d'opposition Centre 2
+    (3, 3),  -- Produit C associé au centre d'opposition Centre 3
+    (4, 1),  -- Produit D associé au centre d'opposition ADMIN
+    (4, 2);  -- Produit D associé au centre d'opposition Centre 2
