@@ -26,7 +26,9 @@
                                     id="etape-produit"
                                     name="etape-produit"
                                 >
-                                    <option>Mais</option>
+                                @foreach ($all_etat_produit as $item)
+                                    <option value="{{$item->id_etat_produit}}" >{{$item->nom_etat}} </option>
+                                @endforeach
                                 </select>
                         
                             </div>

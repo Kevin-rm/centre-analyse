@@ -15,10 +15,9 @@ Route::prefix("charge")->controller(ChargeController::class)->group(function () 
 });
 
 Route::prefix("analyse")->controller(AnalyseController::class)->group(function(){
-    Route::get("/","show")->name("analyse.show");
+    Route::get("/","show")->name("analyse");
 });
 
-Route::view("/analyse", "analyse")->name("analyse");
 
 Route::prefix("centre")->controller(CentreController::class)->group(function () {
     Route::get("/", "show")->name("centre.show");

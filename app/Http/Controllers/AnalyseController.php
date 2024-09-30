@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\EtatProduit;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -16,15 +16,11 @@ class AnalyseController extends Controller
     /**
      * Show the form for creating the resource.
      */
-    public function create(): View|Factory|Application
-    {
-        return view("unite-oeuvre.formulaire");
-    }
 
     /**
      * Store the newly created resource in storage.
      */
-    public function store(Request $request):RedirectResponse     
+    public function store(Request $request)     
     {
         
     }
@@ -33,9 +29,10 @@ class AnalyseController extends Controller
      * Display the resource.
      */
     public function show(): Factory|View|Application
-    {
-      
-    }
+{
+    $all_etat_produit = EtatProduit::all(); // Récupération de toutes les étapes de produit
+    return view("analyse", compact("all_etat_produit")); // Passage des données à la vue
+}
     
     /**
      * Show the form for editing the resource.
@@ -48,17 +45,5 @@ class AnalyseController extends Controller
     /**
      * Update the resource in storage.
      */
-    public function update(Request $request,$id_unite_oeuvre):RedirectResponse
-    {
-        //
-       
-    }
-
-    /**
-     * Remove the resource from storage.
-     */
-    public function destroy($id_unite_oeuvre): RedirectResponse
-    {
-        
-    }
+   
 }
