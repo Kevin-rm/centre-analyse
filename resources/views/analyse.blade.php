@@ -28,13 +28,14 @@
                                 >
                                 @foreach ($all_etat_produit as $item)
                                     <option value="{{$item->id_etat_produit}}" >{{$item->nom_etat}} </option>
-                                @endforeach
                                 </select>
                         
                             </div>
                             <div class="col-sm-5">
-                                <input type="text" disabled value="Kg" name="unite-oeuvre" id="unite-oeuvre" class="form-control">
+                                <input type="text" disabled value="{{ $item->nom_unite_oeuvre  }}" name="unite-oeuvre" id="unite-oeuvre" class="form-control">
                             </div>
+                                @endforeach
+
                         </div>
                     
                         <div class="form-group row">
@@ -69,3 +70,8 @@
     </div>
 @endsection
 
+@section('scripts')
+    <script>
+        const etapeproduit=@json($)
+    </script>
+@endsection
