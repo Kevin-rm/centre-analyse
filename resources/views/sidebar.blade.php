@@ -6,11 +6,10 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <li class="nav-section">
-                    <span class="sidebar-mini-icon">
-                      <i class="fa fa-ellipsis-h"></i>
-                    </span>
-                    <h4 class="text-section">Menu</h4>
+                <li class="nav-item">
+                <a href="{{route("analyse")}}">
+                  <p>Analyse</p>
+                </a>
                 </li>
                 <li class="nav-item active">
                     <a data-bs-toggle="collapse" href="#charge" class="collapsed" aria-expanded="false">
