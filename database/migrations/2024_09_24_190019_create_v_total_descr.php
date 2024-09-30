@@ -14,13 +14,14 @@ return new class extends Migration
     {
         DB::statement("
             CREATE OR REPLACE VIEW total_descr AS
-SELECT 
-    SUM(a.total) AS sum_charge,
-    SUM(b.total_sum_variable) AS sum_total_sum_variable,
-    SUM(b.total_sum_fixe) AS sum_total_sum_fixe
-FROM 
-    v_all_data a,
-    v_desc_total_par_charge b;
+SELECT
+    -- Agrégation des données depuis la première vue
+    (SELECT SUM(a.total) FROM charge a) AS sum_charge,
+    
+    -- Agrégation des données depuis la deuxième vue
+    (SELECT SUM(b.total_sum_variable) FROM v_desc_total_par_charge b) AS sum_total_sum_variable,
+    
+    (SELECT SUM(b.total_sum_fixe) FROM v_desc_total_par_charge b) AS sum_total_sum_fixe;
         ");
     }
 
