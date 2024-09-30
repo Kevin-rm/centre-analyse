@@ -1,8 +1,5 @@
-\c postgres;
-drop database gestion_analytique;
-
-create database gestion_analytique;
-\c gestion_analytique;
+create database centre_analyse;
+\c centre_analyse;
 
 create table unite_oeuvre (
     id_unite_oeuvre serial primary key,
@@ -42,7 +39,7 @@ create table etat_produit_centre_assoc(
 );
 
 CREATE OR REPLACE VIEW v_all_data AS
-SELECT 
+SELECT
     ch.id_charge,
     ch.nom_charge,
     ch.total,
@@ -52,27 +49,27 @@ SELECT
     co.nom_centre_opp,
     co.est_structure,
     coc.pourcentage,
-    CASE 
+    CASE
         WHEN ch.nature = TRUE THEN ch.total * coc.pourcentage
         ELSE 0
     END AS variable,
-    CASE 
+    CASE
         WHEN ch.nature = FALSE THEN ch.total * coc.pourcentage
         ELSE 0
     END AS fixe
-FROM 
+FROM
     charge ch
-JOIN 
+JOIN
     unite_oeuvre uo ON ch.id_unite_oeuvre = uo.id_unite_oeuvre
-JOIN 
+JOIN
     centre_opp_charge coc ON ch.id_charge = coc.id_charge
-JOIN 
+JOIN
     centre_opp co ON coc.id_centre_opp = co.id_centre_opp;
 
 
 
 CREATE OR REPLACE VIEW v_desc_total_par_co AS
-SELECT 
+SELECT
     id_centre_opp,
     est_structure,
     SUM(CASE WHEN nature = TRUE THEN total * pourcentage  ELSE 0 END) AS sum_variable,
@@ -83,18 +80,18 @@ GROUP BY id_centre_opp,est_structure;
 
 
 CREATE OR REPLACE VIEW v_desc_total_par_charge AS
-SELECT 
+SELECT
     id_charge,
     SUM(CASE WHEN nature = TRUE THEN total * pourcentage ELSE 0 END) AS total_sum_variable,
     SUM(CASE WHEN nature = FALSE THEN total * pourcentage ELSE 0 END) AS total_sum_fixe
-FROM 
+FROM
     v_all_data
-GROUP BY 
+GROUP BY
     id_charge;
 
 
 CREATE OR REPLACE VIEW v_table_analytique AS
-SELECT 
+SELECT
     a.id_charge,
     a.nom_charge,
     a.total,
@@ -111,11 +108,11 @@ SELECT
     c.sum_variable_fixe ,
     ch.total_sum_variable,
     ch.total_sum_fixe
-FROM 
+FROM
     v_all_data a
-JOIN 
+JOIN
     v_desc_total_par_co c ON a.id_centre_opp = c.id_centre_opp
-JOIN 
+JOIN
     v_desc_total_par_charge ch ON a.id_charge = ch.id_charge;
 
 
@@ -123,18 +120,18 @@ CREATE OR REPLACE VIEW total_descr AS
 SELECT
     -- Agrégation des données depuis la première vue
     (SELECT SUM(a.total) FROM  a) AS sum_charge,
-    
+
     -- Agrégation des données depuis la deuxième vue
     (SELECT SUM(b.total_sum_variable) FROM v_desc_total_par_charge b) AS sum_total_sum_variable,
-    
+
     (SELECT SUM(b.total_sum_fixe) FROM v_desc_total_par_charge b) AS sum_total_sum_fixe;
 
 
 CREATE OR REPLACE VIEW v_repartition AS
 SELECT
-    id_centre_opp,  
+    id_centre_opp,
     sum_variable_fixe as cout_direct,
-    (SELECT sum(sum_variable_fixe) FROM v_desc_total_par_co WHERE est_structure = FALSE) as total_general,                 
+    (SELECT sum(sum_variable_fixe) FROM v_desc_total_par_co WHERE est_structure = FALSE) as total_general,
     sum_variable_fixe / (SELECT sum(sum_variable_fixe) FROM v_desc_total_par_co WHERE est_structure = FALSE) as cles ,
     (SELECT sum(sum_charge) FROM total_descr) * (sum_variable_fixe / (SELECT sum(sum_variable_fixe) FROM v_desc_total_par_co WHERE est_structure = FALSE)) as "ADM/DIST",
     sum_variable_fixe + (SELECT sum(sum_charge) FROM total_descr) * (sum_variable_fixe / (SELECT sum(sum_variable_fixe) FROM v_desc_total_par_co WHERE est_structure = FALSE)) as cout_total
@@ -145,21 +142,21 @@ WHERE
 
 
 CREATE OR REPLACE VIEW cout_grain AS
-SELECT 
+SELECT
     epca.id_centre_opp,
     ep.*,
     t.sum_variable_fixe as value
-FROM 
+FROM
     etat_produit_centre_assoc epca
-JOIN 
+JOIN
     etat_produit ep ON epca.id_etat_produit = ep.id_etat_produit
-JOIN 
+JOIN
     v_desc_total_par_co t ON epca.id_centre_opp = t.id_centre_opp;
 
 
 -- Insertion de données dans la table unite_oeuvre
 INSERT INTO unite_oeuvre (nom_unite_oeuvre)
-VALUES 
+VALUES
     ('kg'),
     ('tonne'),
     ('kw'),
@@ -175,7 +172,7 @@ VALUES
 
 -- Insertion de données dans la table charge
 INSERT INTO charge (nom_charge, total, nature, id_unite_oeuvre)
-VALUES 
+VALUES
     ('Electricité', 1000.50, TRUE, 3),  -- TRUE pour nature (par exemple: récurrent)
     ('Eau', 500.75, TRUE, 4),
     ('Salaries', 2000.00, FALSE, 2),   -- FALSE pour nature (par exemple: non récurrent)
@@ -184,7 +181,7 @@ VALUES
 
 -- Insertion de données dans la table centre_opp_charge (chaque charge dans chaque centre)
 INSERT INTO centre_opp_charge (id_centre_opp, id_charge, pourcentage)
-VALUES 
+VALUES
     -- Répartition pour la charge 'Electricité' (id_charge = 1)
     (1, 1, 0.33),
     (2, 1, 0.33),
@@ -207,7 +204,7 @@ VALUES
 
 
 INSERT INTO etat_produit (id_unite_oeuvre, nom_etat)
-VALUES 
+VALUES
     (1, 'Produit A'),  -- Produit A mesuré en kg
     (2, 'Produit B'),  -- Produit B mesuré en tonne
     (3, 'Produit C'),  -- Produit C mesuré en kw
@@ -216,7 +213,7 @@ VALUES
 
 -- Insertion de données dans la table etat_produit_centre_assoc
 INSERT INTO etat_produit_centre_assoc (id_etat_produit, id_centre_opp)
-VALUES 
+VALUES
     (1, 1),  -- Produit A associé au centre d'opposition ADMIN
     (1, 2),  -- Produit A associé au centre d'opposition Centre 2
     (2, 1),  -- Produit B associé au centre d'opposition ADMIN
