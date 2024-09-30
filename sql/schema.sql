@@ -147,14 +147,18 @@ WHERE
 CREATE OR REPLACE VIEW cout_grain AS
 SELECT
     epca.id_centre_opp,
-    ep.*,
+    co.nom_centre_opp,
+    ep.nom_etat,
+    uo.nom_unite_oeuvre,
     t.sum_variable_fixe as value
 FROM
     etat_produit_centre_assoc epca
 JOIN
     etat_produit ep ON epca.id_etat_produit = ep.id_etat_produit
 JOIN
-    v_desc_total_par_co t ON epca.id_centre_opp = t.id_centre_opp;
+    v_desc_total_par_co t ON epca.id_centre_opp = t.id_centre_opp
+JOIN unite_oeuvre uo ON uo.id_unite_oeuvre = ep.id_unite_oeuvre
+JOIN centre_opp co ON co.id_centre_opp = epca.id_centre_opp;
 
 
 -- Insertion de données dans la table unite_oeuvre
