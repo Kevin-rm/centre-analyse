@@ -1,3 +1,6 @@
+\c postgres;
+DROP DATABASE centre_analyse;
+
 create database centre_analyse;
 \c centre_analyse;
 
