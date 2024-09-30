@@ -7,6 +7,8 @@ use App\Models\Charge;
 use App\Models\UniteOeuvre;
 use App\Models\VTableAnalytique;
 use App\Models\VDescTotalParCo;
+use App\Models\VTotalDescr;
+
 
 
 
@@ -80,10 +82,11 @@ class ChargeController extends Controller
     {
         $data_analytique = VTableAnalytique::all();
         $data_desc_total_par_co = VDescTotalParCo::all();
-
+        $data_sum_charge = VTotalDescr::first();
+        
         $grouped_data = $data_analytique->groupBy('id_centre_opp');
 
-        return view("charge.liste", compact('grouped_data', 'data_desc_total_par_co'));
+        return view("charge.liste", compact('grouped_data', 'data_desc_total_par_co','data_sum_charge'));
     }
 
     /**
