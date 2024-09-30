@@ -47,3 +47,26 @@
         }
     });
 </script>
+
+
+
+central financier gestion station(faacture standard caisse,compta)=>EJB 
+2-fonctionnement global du systeme(fonctionnel, technique,essaie)
+
+
+station-perso
+affichage-prelevement compteur ->Metier->base (perso)
+
+
+avoir par rapport facture=> permet d'annuler en total ou partiel une facture 7 en debit(avoir)
+
+
+benefice d'un exercice->periode annuel=>detaillé
+
+misy prelevement
+->encaissement(ecriture caisse->iza no tsy nandoha + montant tsy nalohany bon trosa) exception no ilaina raisina
+tsy manao facture raha est eo am encaissement, izay nanao trosa anovana facture mitokana
+
+misy ecart amle encaissement de manome fanazavana
+le vola omena no atao anaty client 
+manampy fonction get benefice 
