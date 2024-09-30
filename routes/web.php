@@ -13,6 +13,9 @@ Route::prefix("charge")->controller(ChargeController::class)->group(function () 
     Route::post("/store","store")->name("charge.store");
 });
 
+
+Route::view("/analyse", "analyse")->name("analyse");
+
 Route::prefix("centre")->controller(CentreController::class)->group(function () {
     Route::get("/", "show")->name("centre.show");
     Route::get("/formulaire", "create")->name("centre.create");
