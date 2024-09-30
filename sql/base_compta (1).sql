@@ -109,36 +109,52 @@ JOIN
 
 
 CREATE OR REPLACE VIEW total_descr AS
-SELECT 
-    SUM(a.total) AS sum_charge,
-    SUM(b.total_sum_variable) AS sum_total_sum_variable,
-    SUM(b.total_sum_fixe) AS sum_total_sum_fixe
-FROM 
-    v_all_data a,
-    v_desc_total_par_charge b;
+SELECT
+    -- Agrégation des données depuis la première vue
+    (SELECT SUM(a.total) FROM  a) AS sum_charge,
+    
+    -- Agrégation des données depuis la deuxième vue
+    (SELECT SUM(b.total_sum_variable) FROM v_desc_total_par_charge b) AS sum_total_sum_variable,
+    
+    (SELECT SUM(b.total_sum_fixe) FROM v_desc_total_par_charge b) AS sum_total_sum_fixe;
+
+
+CREATE OR REPLACE VIEW v_repartition AS
+SELECT
+    id_centre_opp,  
+    sum_variable_fixe as cout_direct,
+    (SELECT sum(sum_variable_fixe) FROM v_desc_total_par_co WHERE est_structure = FALSE) as total_general,                 
+    sum_variable_fixe / (SELECT sum(sum_variable_fixe) FROM v_desc_total_par_co WHERE est_structure = FALSE) as cles ,
+    (SELECT sum(sum_charge) FROM total_descr) * (sum_variable_fixe / (SELECT sum(sum_variable_fixe) FROM v_desc_total_par_co WHERE est_structure = FALSE)) as "ADM/DIST",
+    sum_variable_fixe + (SELECT sum(sum_charge) FROM total_descr) * (sum_variable_fixe / (SELECT sum(sum_variable_fixe) FROM v_desc_total_par_co WHERE est_structure = FALSE)) as cout_total
+FROM
+    v_desc_total_par_co
+WHERE
+    est_structure = FALSE;
 
 -- Insertion de données dans la table unite_oeuvre
 INSERT INTO unite_oeuvre (nom_unite_oeuvre)
 VALUES 
-    ('Unité de Production A'),
-    ('Unité de Production B'),
-    ('Unité de Logistique');
+    ('kg'),
+    ('tonne'),
+    ('kw'),
+    ('litre');
+
 
 -- Insertion de données dans la table centre_opp
 INSERT INTO centre_opp (nom_centre_opp, est_structure)
 VALUES
-    ('Centre Opérationnel 1', TRUE),
-    ('Centre Opérationnel 2', FALSE),
-    ('Centre Opérationnel 3', TRUE);
-
+    ('ADMIN', TRUE),
+    ('Centre 2', FALSE),
+    ('Centre 3', FALSE);
 
 -- Insertion de données dans la table charge
 INSERT INTO charge (nom_charge, total, nature, id_unite_oeuvre)
 VALUES 
-    ('Electricité', 1000.50, TRUE, 1),  -- TRUE pour nature (par exemple: récurrent)
-    ('Eau', 500.75, TRUE, 1),
+    ('Electricité', 1000.50, TRUE, 3),  -- TRUE pour nature (par exemple: récurrent)
+    ('Eau', 500.75, TRUE, 4),
     ('Salaries', 2000.00, FALSE, 2),   -- FALSE pour nature (par exemple: non récurrent)
-    ('Maintenance', 800.20, TRUE, 3);
+    ('Maintenance', 800.20, FALSE, 3);
 
 
 -- Insertion de données dans la table centre_opp_charge (chaque charge dans chaque centre)
